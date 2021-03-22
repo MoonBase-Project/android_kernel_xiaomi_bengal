@@ -63,3 +63,7 @@ config MIUI_ZRAM_MEMORY_TRACKING
 	  /sys/block/zramX/.
 
 	  See Documentation/blockdev/zram.txt for more information.
+
+config ZRAM_DEFAULT_COMP_ALGORITHM
+	string "Default ZRAM algorithm"
+	default "lzo"
