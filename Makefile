@@ -719,6 +719,10 @@ else
 KBUILD_CFLAGS   += -O3
 endif
 
+ifeq ($(cc-name),clang)
+KBUILD_CFLAGS += -mtune=cortex-a53 -mcpu=cortex-a53
+endif
+
 ifdef CONFIG_LLVM_POLLY
 KBUILD_CFLAGS	+= -mllvm -polly \
 		   -mllvm -polly-run-inliner \
