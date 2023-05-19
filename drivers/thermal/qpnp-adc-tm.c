@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-only
 /*
  * Copyright (c) 2012-2019,2021, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2021 Qualcomm Innovation Center, Inc. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -2335,6 +2336,11 @@ static int qpnp_adc_tm_measure_ref_points(struct qpnp_adc_tm_chip *chip)
 		goto err;
 
 	ret = iio_read_channel_processed(chip->ref_625mv, &read_2);
+	ret = iio_read_channel_raw(chip->ref_1250v, &read_1);
+	if (ret < 0)
+		goto err;
+
+	ret = iio_read_channel_raw(chip->ref_625mv, &read_2);
 	if (ret < 0)
 		goto err;
 
@@ -2361,6 +2367,11 @@ static int qpnp_adc_tm_measure_ref_points(struct qpnp_adc_tm_chip *chip)
 		goto err;
 
 	ret = iio_read_channel_processed(chip->ref_gnd, &read_2);
+	ret = iio_read_channel_raw(chip->ref_vdd, &read_1);
+	if (ret < 0)
+		goto err;
+
+	ret = iio_read_channel_raw(chip->ref_gnd, &read_2);
 	if (ret < 0)
 		goto err;
 
