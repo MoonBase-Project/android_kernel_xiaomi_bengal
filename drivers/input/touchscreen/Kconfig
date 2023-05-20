@@ -1368,6 +1368,9 @@ config TOUCHSCREEN_COMMON
 	 depends on I2C
 	 default n
 	 help
-	Say Y here if you have a xiaomi touchscreen and want to enable support for the built-in touchscreen.
+	Say Y here if you have a xiaomi touchscreen and want to enable support for the built-in touchscreen
+	And control touchpanel features via /sys/touchpanel.
+
+	If unsure, say N.
 
 endif
